@@ -7,10 +7,12 @@ pipeline {
     }
 
     environment {
-      AWS_ACCESS_KEY_ID = credentials('awsAccessKeyId')
-      AWS_SECRET_ACCESS_KEY = credentials('awsSecretAccessKey')
+      AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+      AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
       AWS_DEFAULT_REGION = 'ap-northeast-2'
       HOME = '.' // Avoid npm root owned
+      PROD = "prod"
+      ENV = test-env
     }
 
     stages {
@@ -24,7 +26,7 @@ pipeline {
 
                 git url: 'https://github.com/stdev0617/temp.git',
                     branch: 'master',
-                    credentialsId: 'jenkinsgit'
+                    credentialsId: 'stdev0617'
             }
 
             post {
